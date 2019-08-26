@@ -3,6 +3,7 @@ class Menu
   def initialize
     @show_menu = [{:dish => "Bacon", :price => 1}, {:dish => "Apples", :price => 0.8}]
     @orders = []
+    @order = Order.new
 
   end
 
@@ -30,8 +31,24 @@ class Menu
      @orders
   end
 
-  def order_items(order = Order.new, list)
-    order.basket(list)
+  def add_to_basket
+    @order.basket(@orders)
+  end
+
+  def how_much
+    "£#{@order.total}"
+
+  end
+
+  def order_items(bill, phone)
+    p @order.total
+    p bill
+    if @order.total<= bill
+      @order.confirm(phone)
+      return "Thank you, your order has been made!"
+    else
+      return "Sorry something was wrong with your order!"
+    end
   end
 
 
