@@ -20,7 +20,6 @@ class Menu
   end
 
   def order(item)
-    str = ''
     @show_menu.each { |chr|
       if item-1 == @show_menu.index(chr)
         @orders << chr
@@ -41,11 +40,9 @@ class Menu
   end
 
   def order_items(bill, phone)
-    p @order.total
-    p bill
     if @order.total<= bill
       @order.confirm(phone)
-      return "Thank you, your order has been made!"
+      return "Thank you, your order was successfull, and will arrive at #{Time.now.hour+1}:#{Time.now.min}!"
     else
       return "Sorry something was wrong with your order!"
     end

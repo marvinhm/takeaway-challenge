@@ -27,7 +27,7 @@ describe Order do
       order = Order.new
       allow(order).to receive(:orders) { [{:dish => "Bacon", :price => 1}, {:dish => "Apple pie", :price => 3}] }
       p order.orders
-      expect(order.confirm).to eq("Food is on it's way!")
+      expect(order.confirm('+23232323232323')).to eq("Food is on it's way!")
     end
   end
 end

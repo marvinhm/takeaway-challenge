@@ -53,7 +53,7 @@ describe Menu do
       menu1.order(1)
       menu1.add_to_basket
 
-      menu1.order_items(8)
+      menu1.order_items(8, '+23232323232323')
       order = Order.new
       # allow(order).to receive(:orders).with({:dish => "Bacon", :price => 1})
 
@@ -68,7 +68,7 @@ describe Menu do
       amount = 1
       menu1.add_to_basket
       # "#{Time.now.hour}:#{Time.now.min}"
-      expect(menu1.order_items(amount)).to eq("Thank you, your order was successfull, and will arrive at #{Time.now.hour+1}:#{Time.now.min}!")
+      expect(menu1.order_items(amount, '+23232323232323')).to eq("Thank you, your order was successfull, and will arrive at #{Time.now.hour+1}:#{Time.now.min}!")
     end
 
     describe '#add_to_basket' do
@@ -84,7 +84,7 @@ describe Menu do
       menu1.order(1)
       amount = 0.8
       menu1.add_to_basket
-      expect(menu1.order_items(amount)).to eq("Sorry something was wrong with your order!")
+      expect(menu1.order_items(amount, '+23232323232323')).to eq("Sorry something was wrong with your order!")
     end
   end
 
@@ -93,7 +93,7 @@ describe Menu do
       menu1 = Menu.new
       menu1.order(1)
       menu1.add_to_basket
-      menu1.order_items(1)
+      menu1.order_items(1, '+23232323232323')
       # random_order = [{:dish => "Bacon Sandwich", :price => 3}, {:dish => "Chocolate Milk", :price => 1.5}]
 
       expect(menu1.how_much).to eq("£1")
